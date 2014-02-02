@@ -1,8 +1,10 @@
 'use strict';
 
 angular.module('tictactoe')
-.controller('GameCtrl', ['$scope', 'board', 'winChecker', function($scope, board, winChecker) {
+.controller('GameCtrl', ['$scope', 'board', 'winChecker', 'makeGrid', 'BOARD_SIZE',
+function($scope, board, winChecker, makeGrid, BOARD_SIZE) {
 	$scope.game = {
+		highlight: makeGrid(BOARD_SIZE, 0),
 		board: board,
 		currentPlayer: 'x',
 		winner: null,
@@ -10,6 +12,7 @@ angular.module('tictactoe')
 	};
 
 	$scope.restart = function(game) {
+		game.highlight = makeGrid(BOARD_SIZE, 0),
 		game.board.reset();
 		game.winner = null;
 		game.isOver = false;
@@ -40,6 +43,8 @@ angular.module('tictactoe')
 		if (winner) {
 			$scope.game.isOver = true;
 			$scope.game.winner = winner.player;
+			// highlight where the win occurred
+			$scope.game.highlight = winner.grid;
 		} else if (board.isFull()) {
 			$scope.game.isOver = true;
 		} else {

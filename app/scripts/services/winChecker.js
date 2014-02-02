@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('tictactoe')
-.factory('winChecker', [function() {
+.factory('winChecker', ['makeGrid', function(makeGrid) {
 	/**
 	 * @param {Array} grid
 	 * @param {Integer} ind (0-based)
@@ -99,9 +99,39 @@ angular.module('tictactoe')
 				player: player,
 				ind: ind,
 			};
+			ret.grid = highlightGrid(ret, len);
 		}
 
 		return ret;
+	}
+
+	/**
+	 * Takes a winchecker result and creates a grid with the highlighted items marked
+	 */
+	function highlightGrid(result, size) {
+		// initialize grid with all 0 values
+		var grid = makeGrid(size, 0);
+
+		switch (result.type) {
+			case 'row':
+				grid[result.ind] = grid[result.ind].map(function() {
+					return 1;
+				});
+				break;
+			case 'column':
+				grid = grid.map(function(row) {
+					row[result.ind] = 1;
+					return row;
+				});
+				break;
+			case 'diagonal':
+				grid = grid.map(function(row, ind) {
+					row[result.ind ? size - ind - 1 : ind] = 1;
+					return row;
+				});
+				break;
+		}
+		return grid;
 	}
 
 	return checkWin;

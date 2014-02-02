@@ -1,9 +1,7 @@
 'use strict';
 
 angular.module('tictactoe')
-.factory('board', ['BOARD_SIZE', '$filter', function(BOARD_SIZE, $filter) {
-	// create an array [0, 1, ... , BOARD_SIZE - 1]
-	var size = $filter('range')([], BOARD_SIZE);
+.factory('board', ['makeGrid', 'BOARD_SIZE', function(makeGrid, BOARD_SIZE) {
 
 	/**
 	 * Board of nxn dimension
@@ -35,11 +33,7 @@ angular.module('tictactoe')
 	};
 
 	Board.prototype.reset = function() {
-		this.grid = size.map(function(y) {
-			return size.map(function(x) {
-				return;
-			});
-		});
+		this.grid = makeGrid(BOARD_SIZE);
 	};
 
 	Board.prototype.isFull = function() {

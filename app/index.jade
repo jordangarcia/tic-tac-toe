@@ -3,6 +3,7 @@ html(lang="en")
 	head
 		title= 'Tic Tac Toe'
 		link(rel='stylesheet', href='/styles/main.css')
+		meta(name='viewport', content='user-scalable=no, width=device-width, initial-scale=1.0')
 	body(ng-app='tictactoe')
 		div.nav-bar.centered
 			<h1>Tic Tac Toe</h1>
@@ -13,6 +14,7 @@ html(lang="en")
 						td(
 							ng-repeat='x in [] | range:game.board.length',
 							ng-click='play(game, x, y)',
+							ng-class='{ highlighted: game.highlight[y][x] }'
 							ng-style='{ width: {{ 100 / game.board.length }} + "%", height: {{ 100 / game.board.length }} + "%" }'
 						) {{ game.board.get(x,y) }}
 				div.game-over-msg.centered(ng-show='game.isOver')
@@ -28,4 +30,5 @@ html(lang="en")
 	script(src="/scripts/filters/range.js")
 	script(src="/scripts/services/board.js")
 	script(src="/scripts/services/winChecker.js")
+	script(src="/scripts/services/makeGrid.js")
 	script(src="/scripts/controllers/game.js")

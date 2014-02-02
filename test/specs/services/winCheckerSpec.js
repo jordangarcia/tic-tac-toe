@@ -19,12 +19,18 @@ describe('service/winChecker', function() {
 			[x, x, x],
 			[y, y, x]
 		];
+		var highlight = [
+			[0, 0, 0],
+			[1, 1, 1],
+			[0, 0, 0]
+		];
 
 		var result = winChecker(grid);
 
 		expect(result.player).toEqual(x)
 		expect(result.type).toEqual('row')
 		expect(result.ind).toEqual(1)
+		expect(result.grid).toEqual(highlight);
 	});
 
 	it("should correctly find a column win", function() {
@@ -33,12 +39,18 @@ describe('service/winChecker', function() {
 			[y, y, x],
 			[x, y, x]
 		];
+		var highlight = [
+			[0, 1, 0],
+			[0, 1, 0],
+			[0, 1, 0]
+		];
 
 		var result = winChecker(grid);
 
 		expect(result.player).toEqual(y)
 		expect(result.type).toEqual('column')
 		expect(result.ind).toEqual(1)
+		expect(result.grid).toEqual(highlight);
 	});
 
 	it("should correctly find a diagonal win", function() {
@@ -46,6 +58,11 @@ describe('service/winChecker', function() {
 			[x, y, y],
 			[x, y, x],
 			[y, x, x]
+		];
+		var highlight = [
+			[0, 0, 1],
+			[0, 1, 0],
+			[1, 0, 0]
 		];
 
 		var result = winChecker(grid);
