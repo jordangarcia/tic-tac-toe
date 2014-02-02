@@ -6,10 +6,15 @@ angular.module('tictactoe')
 	 * Board of nxn dimension
 	 */
 	function Board(n) {
-		this board = [];
+		this.board = [];
 		for (var i = 0; i < n; i++) {
-			board.push([]);
+			var row = [];
+			for (var j = 0; j < n; j++) {
+				row.push(0);
+			}
+			this.board.push(row);
 		}
+		return this.board;
 	}
 
 	/**
@@ -20,8 +25,12 @@ angular.module('tictactoe')
 	 * @param {Integer} y coord
 	 */
 	Board.prototype.mark = function(val, x, y) {
-		this.board[x][y] = val;
+		this.board[y][x] = val;
 	};
+
+	Board.prototype.size = function() {
+		return this.board.length;
+	}
 
 	return new Board(BOARD_SIZE);
 }]);

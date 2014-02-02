@@ -14,6 +14,7 @@ $navbar-link-color: black;
 body {
 	color: #181818;
 	@include sans-serif;
+	padding-top: $navbar-height;
 }
 
 p {
@@ -51,5 +52,16 @@ p {
 				@include sans-serif;
 			}
 		}
+	}
+}
+
+table.board {
+	width: 400px;
+	height: 400px;
+
+	td {
+		vertical-align: middle;
+		text-align: center;
+		font-size: 48px;
 	}
 }

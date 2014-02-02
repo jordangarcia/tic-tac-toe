@@ -3,11 +3,16 @@ html(lang="en")
 	head
 		title= 'Tic Tac Toe'
 		link(rel='stylesheet', href='/styles/main.css')
-	body
+	body(ng-app='tictactoe')
 		div.nav-bar.centered
 			<h1>Tic Tac Toe</h1>
+		div.container(ng-controller='GameCtrl')
+			div.eight.columns.offset-by-four
+				board(src='board')
 	script(src="/bower_components/underscore/underscore.js")
 	script(src="/bower_components/angular/angular.js")
 	script(src="/scripts/app.js")
+	script(src="/scripts/filters/range.js")
 	script(src="/scripts/services/board.js")
 	script(src="/scripts/controllers/game.js")
+	script(src="/scripts/directives/board.js")

@@ -1,0 +1,4 @@
+table(class='board')
+	tr(ng-repeat='y in []|range:board.length')
+		td(ng-repeat='x in []|range:board.length' ng-click='onClick' ng-style='{ width: {{ 100 / board.length }} + "%" }') 
+			| {{ board.y.x }} hi
