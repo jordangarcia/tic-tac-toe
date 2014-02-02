@@ -17,6 +17,10 @@ npm start
 npm test
 ```
 
+### Configuration
+**To configure board size**
+Change the `BOARD_SIZE` constant in `app/scripts/app.js`
+
 ### Libraries Used
 * AngularJS
 * Jade - templating
