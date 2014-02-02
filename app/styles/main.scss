@@ -12,46 +12,23 @@ $navbar-link-color: black;
 }
 
 body {
-	color: #181818;
 	@include sans-serif;
 	padding-top: $navbar-height;
 }
 
-p {
-	font-size: 1.3em;
-	line-height: 1.5em;
-	font-weight: 400;
-	letter-spacing: 1px;
-}
-
 .nav-bar {
-	@include box-shadow(1px 0px 15px #aaa);
-	background-color:  white;
-	background:        rgba(255, 255, 255, .85);
+	background-color:  #333;
 	position:          fixed;
 	top:               0;
 	left:              0;
 	right:             0;
 	position:          fixed;
-	z-index:           1000;
 
-	ul {
-		width: $navbar-width;
-		margin: 0 auto;
-
-		li {
-			@include border-box;
-			height: $navbar-height;
-			padding: 20px 20px;
-			float: left;
-
-			a {
-				font-size: 18px;
-				text-transform: uppercase;
-				color: $navbar-link-color;
-				@include sans-serif;
-			}
-		}
+	h2 {
+		color: white;
+		font-weight: 200;
+		line-height: $navbar-height;
+		margin: 0;
 	}
 }
 
