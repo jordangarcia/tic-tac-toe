@@ -10,6 +10,7 @@
   ],
   "dependencies": {
     "angular": "~1.2.11-build.2202",
-    "underscore": "~1.5.2"
+    "underscore": "~1.5.2",
+    "angular-mocks": "~1.2.11-build.2202"
   }
 }
