@@ -36,7 +36,6 @@ function($scope, board, winChecker, makeGrid, BOARD_SIZE) {
 		game.isOver = false;
 	};
 
-
 	/**
 	 * @param {Object} game
 	 */
