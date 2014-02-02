@@ -7,9 +7,15 @@ bower install
 npm start
 ```
 
+**By default development version is available at**
 `http://localhost:8003`
 
 *note*: In order for dev building to work Ruby and the sass gem need to be install.
+
+**To Test**
+```
+npm test
+```
 
 ### Libraries Used
 * AngularJS
