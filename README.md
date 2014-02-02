@@ -3,6 +3,7 @@
 **To Start**
 ```
 npm install
+bower install
 npm start
 ```
 
