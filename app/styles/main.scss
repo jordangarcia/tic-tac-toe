@@ -58,10 +58,12 @@ p {
 table.board {
 	width: 400px;
 	height: 400px;
+	margin: 0 auto;
 
 	td {
 		vertical-align: middle;
 		text-align: center;
 		font-size: 48px;
+		border: 1px solid #888;
 	}
 }

@@ -1,20 +1,20 @@
 'use strict';
 
 angular.module('tictactoe')
-.factory('board', ['BOARD_SIZE', function(BOARD_SIZE) {
+.factory('board', ['BOARD_SIZE', '$filter', function(BOARD_SIZE, $filter) {
+	// create an array [0, 1, ... , BOARD_SIZE - 1]
+	var size = $filter('range')([], BOARD_SIZE);
+
 	/**
 	 * Board of nxn dimension
 	 */
 	function Board(n) {
-		this.board = [];
-		for (var i = 0; i < n; i++) {
-			var row = [];
-			for (var j = 0; j < n; j++) {
-				row.push(0);
-			}
-			this.board.push(row);
-		}
-		return this.board;
+		this.length = n;
+		this.grid = size.map(function(y) {
+			return size.map(function(x) {
+				return;
+			})
+		});
 	}
 
 	/**
@@ -25,12 +25,18 @@ angular.module('tictactoe')
 	 * @param {Integer} y coord
 	 */
 	Board.prototype.mark = function(val, x, y) {
-		this.board[y][x] = val;
+		this.grid[y][x] = val;
 	};
 
-	Board.prototype.size = function() {
-		return this.board.length;
-	}
+	/**
+	 * Gets value at square
+	 *
+	 * @param {Integer} x coord
+	 * @param {Integer} y coord
+	 */
+	Board.prototype.get = function(x, y) {
+		return this.grid[y][x];
+	};
 
 	return new Board(BOARD_SIZE);
 }]);
