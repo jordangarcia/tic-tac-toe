@@ -10,11 +10,7 @@ angular.module('tictactoe')
 	 */
 	function Board(n) {
 		this.length = n;
-		this.grid = size.map(function(y) {
-			return size.map(function(x) {
-				return;
-			})
-		});
+		this.reset();
 	}
 
 	/**
@@ -37,6 +33,20 @@ angular.module('tictactoe')
 	Board.prototype.get = function(x, y) {
 		return this.grid[y][x];
 	};
+
+	Board.prototype.reset = function() {
+		this.grid = size.map(function(y) {
+			return size.map(function(x) {
+				return;
+			});
+		});
+	};
+
+	Board.prototype.isFull = function() {
+		return _.every(this.grid, function(row) {
+			return _.every(row, _.identity);
+		});
+	}
 
 	return new Board(BOARD_SIZE);
 }]);

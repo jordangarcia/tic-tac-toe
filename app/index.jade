@@ -9,13 +9,18 @@ html(lang="en")
 		div.container(ng-controller='GameCtrl')
 			div.eight.columns.offset-by-four
 				table.board
-					tr(ng-repeat='y in []|range:board.length')
+					tr(ng-repeat='y in [] | range:game.board.length')
 						td(
-							ng-repeat='x in []|range:board.length',
-							ng-click='play(currentPlayer, x, y)',
-							ng-style='{ width: {{ 100 / board.length }} + "%", height: {{ 100 / board.length }} + "%" }'
-						) {{ board.get(x,y) }}
-
+							ng-repeat='x in [] | range:game.board.length',
+							ng-click='play(game, x, y)',
+							ng-style='{ width: {{ 100 / game.board.length }} + "%", height: {{ 100 / game.board.length }} + "%" }'
+						) {{ game.board.get(x,y) }}
+				div.game-over-msg.centered(ng-show='game.isOver')
+					h3(ng-show='game.winner')
+						| {{ game.winner }} won!
+					h3(ng-show='!game.winner')
+						| Draw!
+					button(ng-click='restart(game)') New Game
 
 	script(src="/bower_components/underscore/underscore.js")
 	script(src="/bower_components/angular/angular.js")

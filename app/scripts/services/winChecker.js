@@ -16,7 +16,7 @@ angular.module('tictactoe')
 	function same(arr) {
 		var compare = arr[0];
 		return _.every(arr, function(val) {
-			return val === compare;
+			return (val !== undefined && val === compare);
 		});
 	}
 
@@ -53,6 +53,7 @@ angular.module('tictactoe')
 		var ret;
 
 		if (!type) {
+			// check row wins
 			for (var i = 0; i < len; i++) {
 				if (same(grid[i])) {
 					// get the player x or y
@@ -65,6 +66,7 @@ angular.module('tictactoe')
 		}
 
 		if (!type) {
+			// check column wins
 			for (var i = 0; i < len; i++) {
 				var arr = col(grid, i);
 				if (same(arr)) {
@@ -78,6 +80,7 @@ angular.module('tictactoe')
 		}
 
 		if (!type) {
+			// check diagonal wins
 			for (var i = 0; i < 2; i++) {
 				var arr = diag(grid, i);
 				if (same(arr)) {
