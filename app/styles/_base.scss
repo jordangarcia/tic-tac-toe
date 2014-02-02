@@ -1,0 +1,46 @@
+@import 'lib/_reset.scss';
+@import 'lib/_mixins.scss';
+@import 'lib/_grid.scss';
+@import '_typography.scss';
+
+/**
+ * Global Styles
+ */
+.container {
+	position: relative;
+	width: 960px;
+	margin: 0 auto;
+	padding: 30px 0;
+
+	@include grid(960px, 16)
+}
+
+.row {
+	@include clear-fix;
+	margin-bottom: 20px;
+}
+
+.container:after {
+	@include clear-fix;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 959px) {
+	.container {
+		width: 768px;
+		@include grid(768px, 16);
+	}
+}
+
+@media only screen and (max-width: 767px) {
+	.container {
+		width: 300px;
+		@include grid-fixed(300px, 16);
+	}
+}
+
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+	.container {
+		width: 420px;
+		@include grid-fixed(420px, 16);
+	}
+}
