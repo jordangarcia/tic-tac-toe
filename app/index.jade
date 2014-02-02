@@ -19,7 +19,7 @@ html(lang="en")
 						) {{ game.board.get(x,y) }}
 				div.game-over-msg.centered(ng-show='game.isOver')
 					h3(ng-show='game.winner')
-						| {{ game.winner }} won!
+						| Winner: Player {{ playerName(game.winner) }}
 					h3(ng-show='!game.winner')
 						| Draw!
 					button(ng-click='restart(game)') New Game

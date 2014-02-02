@@ -3,6 +3,8 @@
 angular.module('tictactoe')
 .controller('GameCtrl', ['$scope', 'board', 'winChecker', 'makeGrid', 'BOARD_SIZE',
 function($scope, board, winChecker, makeGrid, BOARD_SIZE) {
+
+	// state of game
 	$scope.game = {
 		highlight: makeGrid(BOARD_SIZE, 0),
 		board: board,
@@ -10,7 +12,23 @@ function($scope, board, winChecker, makeGrid, BOARD_SIZE) {
 		winner: null,
 		isOver: false
 	};
+	/**
+	 * Function to handle converting a player marker to name
+	 *
+	 * @param {String}
+	 * @return {String}
+	 */
+	$scope.playerName = function(player) {
+		var names = {
+			x: 'A',
+			y: 'B'
+		};
+		return names[player];
+	};
 
+	/**
+	 * @param {Object} game
+	 */
 	$scope.restart = function(game) {
 		game.highlight = makeGrid(BOARD_SIZE, 0),
 		game.board.reset();
@@ -18,6 +36,10 @@ function($scope, board, winChecker, makeGrid, BOARD_SIZE) {
 		game.isOver = false;
 	};
 
+
+	/**
+	 * @param {Object} game
+	 */
 	$scope.advanceTurn = function(game) {
 		$scope.game.currentPlayer = (game.currentPlayer === 'x') ? 'o' : 'x';
 	};
@@ -29,7 +51,6 @@ function($scope, board, winChecker, makeGrid, BOARD_SIZE) {
 	 * @param {Integer} y coord
 	 */
 	$scope.play = function(game, x, y) {
-		debugger;
 		if (game.isOver) {
 			return;
 		}
@@ -37,6 +58,7 @@ function($scope, board, winChecker, makeGrid, BOARD_SIZE) {
 			// already value present, cant play
 			return;
 		}
+
 		game.board.mark(game.currentPlayer, x, y);
 
 		var winner = winChecker(game.board.grid);
