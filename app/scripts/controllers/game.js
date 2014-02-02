@@ -21,7 +21,7 @@ function($scope, board, winChecker, makeGrid, BOARD_SIZE) {
 	$scope.playerName = function(player) {
 		var names = {
 			x: 'A',
-			y: 'B'
+			o: 'B'
 		};
 		return names[player];
 	};
