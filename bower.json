@@ -9,6 +9,7 @@
     "tests"
   ],
   "dependencies": {
-    "angular": "~1.2.11-build.2202"
+    "angular": "~1.2.11-build.2202",
+    "underscore": "~1.5.2"
   }
 }
